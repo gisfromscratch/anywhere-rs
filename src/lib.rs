@@ -26,6 +26,8 @@ mod tests {
 
     use super::*;
 
+    use std::env;
+
     #[test]
     fn generate_token() {
         let portal = Portal { 
@@ -36,5 +38,16 @@ mod tests {
         let expected_payload: &str = "client_id=123&client_secret=xyz&grant_type=client_credentials";
         let payload = portal.generate_token();
         assert_eq!(expected_payload, payload);
+    }
+
+    #[test]
+    fn generate_token_using_environment() {
+        let client_id_key = "portal.clientid";
+        let client_id = env::var(client_id_key);
+        assert_eq!(true, client_id.is_ok());
+        
+        let client_secret_key = "portal.appid";
+        let client_secret = env::var(client_secret_key);
+        assert_eq!(true, client_secret.is_ok());
     }
 }
