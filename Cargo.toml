@@ -1,8 +1,15 @@
 [package]
 name = "anywhere-rs"
 version = "0.1.0"
-authors = ["J.T. <gisfromscratch@live.de>"]
+authors = ["Jan Tschada <gisfromscratch@live.de>"]
 edition = "2018"
+description = "A simple Rust crate for using the ArcGIS REST API."
+documentation = "https://github.com/gisfromscratch/anywhere-rs/wiki/anywhere-rs"
+readme = "README.md"
+homepage = "https://github.com/gisfromscratch/anywhere-rs"
+license = "LGPL-2.1"
+license-file = "LICENSE"
+keywords = ["arcgis"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
