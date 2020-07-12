@@ -52,6 +52,6 @@ mod tests {
 
         let portal = Portal::new(client_id.unwrap(), client_secret.unwrap());
         let payload = portal.generate_token();
-        assert_ne!(payload.is_empty(), true);
+        assert_ne!(true, payload.is_empty());
     }
 }
