@@ -49,5 +49,9 @@ mod tests {
         let client_secret_key = "portal.appid";
         let client_secret = env::var(client_secret_key);
         assert_eq!(true, client_secret.is_ok());
+
+        let portal = Portal::new(client_id.unwrap(), client_secret.unwrap());
+        let payload = portal.generate_token();
+        assert_ne!(payload.is_empty(), true);
     }
 }
