@@ -10,13 +10,17 @@ impl Portal {
         Portal { client_id, client_secret }
     }
 
-    pub fn generate_token(&self) -> String {
+    fn generate_payload(&self) -> String {
         let mut payload: String = "client_id=".to_owned();
         payload.push_str(&self.client_id);
         payload.push_str("&client_secret=");
         payload.push_str(&self.client_secret);
         payload.push_str("&grant_type=client_credentials");
         payload
+    }
+
+    pub fn generate_token(&self) -> String {
+        self.generate_payload()
     }
 }
 
@@ -36,7 +40,7 @@ mod tests {
         };
 
         let expected_payload: &str = "client_id=123&client_secret=xyz&grant_type=client_credentials";
-        let payload = portal.generate_token();
+        let payload = portal.generate_payload();
         assert_eq!(expected_payload, payload);
     }
 
@@ -51,7 +55,7 @@ mod tests {
         assert_eq!(true, client_secret.is_ok());
 
         let portal = Portal::new(client_id.unwrap(), client_secret.unwrap());
-        let payload = portal.generate_token();
+        let payload = portal.generate_payload();
         assert_ne!(true, payload.is_empty());
     }
 }
